@@ -7,11 +7,16 @@
     
     <meta name="monetag" content="8d65b30ca855e8bb8be79811fcd6eb05">
    
+    <!-- Popunder Ad Script -->
     <script>(function(s){s.dataset.zone='11065946',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+    
+    <script src="https://5gvci.com/act/files/tag.min.js?z=11073277" data-cfasync="false" async></script>
+    
+    <!-- Vignette Ad Script -->
+    <script>(function(s){s.dataset.zone='11067077',s.src='https://n6wxm.com/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
     
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- এখানে & এর জায়গায় &amp; করে দেওয়া হয়েছে যেন Blogger এ XML error না আসে -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
 
     <style>
@@ -27,10 +32,18 @@
             --accent-glow: rgba(255, 8, 68, 0.15);
             --inner-card: #ffffff;
             
-            /* Colorful TV Logo Token (Light Mode) */
             --tv-border-gradient: linear-gradient(135deg, #ff007f, #7c3aed, #00f2fe);
             --tv-bg: rgba(15, 23, 42, 0.95);
             --tv-glow: rgba(124, 58, 237, 0.3);
+
+            /* CUSTOM AD BORDER COLORS (Light Mode) */
+            --ad-border-gradient: linear-gradient(135deg, #7c3aed, #ff007f);
+            --ad-box-shadow: 0 8px 20px rgba(124, 58, 237, 0.15);
+
+            /* BANNER BORDER & GLOW (Light Mode) */
+            --banner-border: linear-gradient(135deg, #ff003c, #7c3aed, #00f2fe);
+            --banner-glow: 0 10px 30px rgba(255, 0, 60, 0.2);
+            --banner-bg: #000000;
         }
 
         /* DARK MODE STYLES */
@@ -45,10 +58,18 @@
             --accent-glow: rgba(0, 242, 254, 0.3);
             --inner-card: #0b0f19;
             
-            /* Colorful TV Logo Token (Dark Mode) */
             --tv-border-gradient: linear-gradient(135deg, #00f2fe, #ff007f, #9b51e0);
             --tv-bg: rgba(2, 6, 23, 0.9);
             --tv-glow: rgba(0, 242, 254, 0.5);
+
+            /* CUSTOM AD BORDER COLORS (Dark Mode) */
+            --ad-border-gradient: linear-gradient(135deg, #00f2fe, #ff007f, #9b51e0);
+            --ad-box-shadow: 0 8px 25px rgba(0, 242, 254, 0.4);
+
+            /* BANNER BORDER & GLOW (Dark Mode) */
+            --banner-border: linear-gradient(135deg, #ff003c, #ff007f, #7c3aed);
+            --banner-glow: 0 12px 35px rgba(255, 0, 60, 0.45);
+            --banner-bg: #000000;
         }
 
         * {
@@ -85,7 +106,6 @@
             gap: 15px;
         }
 
-        /* PREMIUM COLORFUL TV STYLE LOGO */
         .brand {
             display: flex;
             align-items: center;
@@ -116,7 +136,6 @@
         .antenna-left { transform: rotate(-30deg); }
         .antenna-right { transform: rotate(30deg); }
 
-        /* The Colorful TV Box Outside Border */
         .tv-screen-box {
             position: relative;
             padding: 3px;
@@ -128,7 +147,6 @@
             justify-content: center;
         }
 
-        /* Inner Screen Area */
         .tv-inner-screen {
             background: var(--tv-bg);
             padding: 6px 18px;
@@ -206,9 +224,36 @@
             animation: blink 1.5s infinite;
         }
 
+        /* PERFECT RESPONSIVE BANNER SECTION */
+        .banner-container {
+            max-width: 1000px;
+            margin: 20px auto 5px;
+            padding: 0 25px;
+        }
+
+        .banner-wrapper {
+            position: relative;
+            padding: 3px; 
+            border-radius: 16px;
+            background: var(--banner-border);
+            box-shadow: var(--banner-glow);
+            overflow: hidden;
+            background-color: var(--banner-bg);
+        }
+
+        .banner-wrapper img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 6.5; 
+            object-fit: contain;   
+            display: block;
+            border-radius: 13px;
+            background-color: #000000;
+        }
+
         /* PLAYER CONTAINER */
         .player-wrapper {
-            padding: 25px;
+            padding: 15px 25px 25px;
             max-width: 1000px;
             margin: 0 auto;
         }
@@ -224,12 +269,11 @@
 
         video {
             width: 100%;
-            height: 500px;
+            height: 360px;
             display: block;
-            object-fit: contain;
+            object-fit: fill; /* 'contain' পরিবর্তন করে 'fill' করা হয়েছে যেন দুই পাশের কালো স্ক্রিন চলে যায় */
         }
 
-        /* STREAM INFO BAR UNDER VIDEO */
         .stream-info-bar {
             background: rgba(0, 0, 0, 0.8);
             color: white;
@@ -237,6 +281,43 @@
             font-size: 14px;
             font-weight: 500;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* CUSTOM ADVERTISEMENT BOX WITH GLOW BORDER */
+        .custom-ad-container {
+            max-width: 1000px;
+            margin: 15px auto;
+            padding: 0 25px;
+        }
+
+        .ad-wrapper {
+            position: relative;
+            padding: 4px; 
+            border-radius: 16px;
+            background: var(--ad-border-gradient);
+            box-shadow: var(--ad-box-shadow);
+            overflow: hidden;
+        }
+
+        .ad-inner-box {
+            background: var(--inner-card);
+            border-radius: 12px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100px;
+            text-align: center;
+        }
+
+        .ad-tag {
+            font-size: 10px;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            margin-bottom: 12px;
         }
 
         /* SEARCH & CATEGORIES */
@@ -322,7 +403,6 @@
             gap: 25px;
         }
 
-        /* CIRCLE CHANNEL LOGO DESIGN */
         .channel {
             position: relative;
             width: 130px;
@@ -428,7 +508,6 @@
             color: var(--text-muted);
         }
 
-        /* ANIMATIONS */
         @keyframes spin { 100% { transform: rotate(360deg); } }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 
@@ -473,16 +552,15 @@
             padding: 0 4px;
         }
 
-        /* RESPONSIVE DESIGN (MOBILE OPTIMIZATIONS) */
+        /* RESPONSIVE DESIGN */
         @media(max-width: 768px) {
-            video { height: 230px; }
+            video { height: 160px; } 
             .header { padding: 10px 15px; }
             .top-bar { gap: 8px; }
             .channel-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
             .channel { width: 95px; height: 95px; }
             .channel-name { font-size: 9px; max-width: 90px; padding: 2px 8px; bottom: -8px;}
             
-            /* Logo Size Reduced for Mobile */
             .tv-screen-box { border-radius: 8px; padding: 2px; }
             .tv-inner-screen { padding: 4px 10px; border-radius: 6px; gap: 6px; }
             .tv-logo-text { font-size: 15px; letter-spacing: 1px; }
@@ -491,7 +569,11 @@
             .subtext { font-size: 9px; margin-top: 2px; margin-left: 2px; }
             .theme-toggle, .live-status { padding: 6px 14px; font-size: 12px; }
 
-            /* App Download Button Smaller for Mobile */
+            .banner-container { padding: 0 15px; margin-top: 15px; }
+            .banner-wrapper { padding: 2px; border-radius: 12px; }
+            .banner-wrapper img { border-radius: 10px; }
+            .player-wrapper { padding: 10px 15px 20px; }
+
             #draggableAppBtn {
                 width: 60px;
                 height: 60px;
@@ -499,15 +581,8 @@
                 right: 15px;
                 box-shadow: 0 6px 15px rgba(255, 0, 60, 0.4);
             }
-            #draggableAppBtn i {
-                font-size: 15px;
-                margin-bottom: 1px;
-            }
-            #draggableAppBtn span {
-                font-size: 7px;
-                line-height: 8px;
-                padding: 0 2px;
-            }
+            #draggableAppBtn i { font-size: 15px; margin-bottom: 1px; }
+            #draggableAppBtn span { font-size: 7px; line-height: 8px; padding: 0 2px; }
         }
     </style>
 </head>
@@ -519,6 +594,7 @@
         <span>app download</span>
     </a>
 
+    <!-- HEADER NAVIGATION -->
     <div class="header">
         <div class="top-bar">
             <div class="brand">
@@ -552,16 +628,24 @@
         </div>
     </div>
 
+    <!-- SAKIB.PNG BANNER SECTION -->
+    <div class="banner-container">
+        <div class="banner-wrapper">
+            <img src="sakib.png" alt="Sakib TV Banner">
+        </div>
+    </div>
+
+    <!-- VIDEO PLAYER -->
     <div class="player-wrapper">
         <div class="player-box" id="playerBox">
             <video id="video" autoplay="autoplay" controls="controls"></video>
-            
             <div class="stream-info-bar">
                 <span id="currentPlayingName">Loading Stream...</span>
             </div>
         </div>
     </div>
 
+    <!-- SEARCH & FILTERS -->
     <div class="search-filter-section">
         <div class="search-wrapper">
             <span class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
@@ -572,10 +656,12 @@
         </div>
     </div>
 
+    <!-- CHANNEL GRID LIST -->
     <div class="channel-grid-wrapper">
         <div class="channel-grid" id="channelGrid"></div>
     </div>
 
+    <!-- FOOTER SECTION -->
     <div class="footer">
         <h2>SAKIB TV</h2>
         <p>© 2026 Made By Sakib • All Rights Reserved</p>
@@ -772,7 +858,7 @@
             renderChannels(); 
         }
 
-        // DRAG AND DROP JAVASCRIPT LOGIC
+        // DRAG AND DROP LOGIC
         const dragBtn = document.getElementById("draggableAppBtn");
         let isDragging = false;
         let startX, startY, initialX, initialY;
